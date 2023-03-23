@@ -6,7 +6,7 @@ require 'fastlane/plugin/versioning_android_kts/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'fastlane-plugin-versioning_android_kts'
-  spec.version       = Fastlane::VersioningAndroid::VERSION
+  spec.version       = Fastlane::VersioningAndroidKts::VERSION
   spec.author        = 'Serge'
   spec.email         = 'sergiusz.cichosz@gmail.com'
 
