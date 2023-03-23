@@ -5,7 +5,7 @@ module Fastlane
       require "tempfile"
       require "fileutils"
 
-      GRADLE_FILE_TEST = "/tmp/fastlane/tests/versioning/app/build.gradle"
+      GRADLE_FILE_TEST = "/tmp/fastlane/tests/versioning/app/build.gradle.kts"
 
       def self.get_gradle_file(gradle_file)
         return Helper.test? ? GRADLE_FILE_TEST : gradle_file
