@@ -6,7 +6,7 @@ describe Fastlane::Actions::AndroidGetVersionNameAction do
       copy_project_files_fixture
     end
 
-    it "should return Version Name from app build.gradle file" do
+    it "should return Version Name from app build.gradle.kts file" do
       result = Fastlane::FastFile.new.parse('lane :test do
         android_get_version_name
       end').runner.execute(:test)

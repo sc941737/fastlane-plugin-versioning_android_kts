@@ -10,7 +10,7 @@ module Fastlane
         version_name = Helper::VersioningAndroidHelper.read_key_from_gradle_file(gradle_file_path, "versionName")
 
         if version_name == false
-          UI.user_error!("Unable to find the versionName in build.gradle file at #{gradle_file_path}.")
+          UI.user_error!("Unable to find the versionName in build.gradle.kts file at #{gradle_file_path}.")
         end
 
         UI.success("👍  Current Android Version Name is: #{version_name}")
@@ -31,12 +31,12 @@ module Fastlane
         [
           FastlaneCore::ConfigItem.new(key: :gradle_file,
                                   env_name: "FL_ANDROID_GET_VERSION_NAME_GRADLE_FILE",
-                               description: "(optional) Specify the path to your app build.gradle if it isn't in the default location",
+                               description: "(optional) Specify the path to your app build.gradle.kts if it isn't in the default location",
                                   optional: true,
                                       type: String,
-                             default_value: "app/build.gradle",
+                             default_value: "app/build.gradle.kts",
                               verify_block: proc do |value|
-                                UI.user_error!("Could not find app build.gradle file") unless File.exist?(value) || Helper.test?
+                                UI.user_error!("Could not find app build.gradle.kts file") unless File.exist?(value) || Helper.test?
                               end)
         ]
       end
@@ -61,8 +61,8 @@ module Fastlane
 
       def self.example_code
         [
-          'version_name = android_get_version_name # build.gradle is in the default location',
-          'version_name = android_get_version_name(gradle_file: "/path/to/build.gradle")'
+          'version_name = android_get_version_name # build.gradle.kts is in the default location',
+          'version_name = android_get_version_name(gradle_file: "/path/to/build.gradle.kts")'
         ]
       end
     end

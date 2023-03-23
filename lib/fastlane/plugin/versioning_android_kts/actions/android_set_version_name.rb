@@ -13,7 +13,7 @@ module Fastlane
         saved = Helper::VersioningAndroidHelper.save_key_to_gradle_file(gradle_file_path, "versionName", new_version_name)
 
         if saved == -1
-          UI.user_error!("Unable to set the Version Name in build.gradle file at #{gradle_file_path}.")
+          UI.user_error!("Unable to set the Version Name in build.gradle.kts file at #{gradle_file_path}.")
         end
 
         UI.success("☝️  Android Version Name has been set to: #{new_version_name}")
@@ -34,12 +34,12 @@ module Fastlane
         [
           FastlaneCore::ConfigItem.new(key: :gradle_file,
                                   env_name: "FL_ANDROID_SET_VERSION_NAME_GRADLE_FILE",
-                               description: "(optional) Specify the path to your app build.gradle if it isn't in the default location",
+                               description: "(optional) Specify the path to your app build.gradle.kts if it isn't in the default location",
                                   optional: true,
                                       type: String,
-                             default_value: "app/build.gradle",
+                             default_value: "app/build.gradle.kts",
                               verify_block: proc do |value|
-                                UI.user_error!("Could not find app build.gradle file") unless File.exist?(value) || Helper.test?
+                                UI.user_error!("Could not find app build.gradle.kts file") unless File.exist?(value) || Helper.test?
                               end),
           FastlaneCore::ConfigItem.new(key: :version_name,
                                   env_name: "FL_ANDROID_SET_VERSION_NAME_VERSION_NAME",
@@ -81,7 +81,7 @@ module Fastlane
           )',
           'android_set_version_name(
             version_name: "2.34.5",
-            gradle_file: "/path/to/build.gradle" # build.gradle is not in the default location
+            gradle_file: "/path/to/build.gradle.kts" # build.gradle.kts is not in the default location
           )'
         ]
       end
